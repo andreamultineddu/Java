@@ -1,12 +1,14 @@
-public class LocalActor<T extends Message> extends AbsActor<T extends Message>
+public class Mail
 {
-    Mailbox mailbox;
-    Thread t;
+    private ActorRef s;
+    private Message m;
 
-    public LocalActor() {mailbox = new Mailbox();}
-
-    public void receive(T message)
+    public Mail(ActorRef a, Message m)
     {
-        mailbox.AddMessage(message);
+        s = a;
+        this.m = m;
     }
+
+    public ActorRef GetS() {return s;}
+    public Message GetM() {return m;}
 }

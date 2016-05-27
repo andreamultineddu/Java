@@ -1,16 +1,57 @@
-public class ConcreteActroSystem extends AbsActorSystem
+import java.util.concurrent.locks.ReentrantLock;
+import it.unipd.math.pcd.actors;
+
+//uno usa i lock; l;altro la concurrency map
+
+public class ConcreteActorSystem extends AbsActorSystem
 {
-    private ConcreteActroSystem instance = null;
+    private ConcreteActorSystem instance = null;
+    private Lock lock = new ReentrantLock();
 
     private ConcreteActorSystem()
     {
         actors = new Map();
     }
 
-    public synchronized ConcreteActroSystem GetInstance()
+    public static synchronized ConcreteActorSystem GetInstance()
     {
         if(instance == null)
-            instance = new ConcreteActroSystem()();
+            instance = new ConcreteActorSystem()();
         return instance;
     }
+<<<<<<< HEAD
+
+    public Actor RetrieveActor(ActorRef ar)
+    {
+        lock.lock();
+        Actor a = null;
+        try
+        {
+            if (actors.containsKey(ar))
+                a = actors.get(ar);
+        }
+        finally
+        {
+            lock.unlock();
+            return a;
+        }
+    }
+
+    protected ActorRef createActorReference(ActorMode mode)
+    {
+        return new ActorRef();
+    }
+
+    public void stop(ActorRef<?> actor)
+    {
+        actors.
+    }
+
+    public void stop()
+    {
+
+    }
 }
+=======
+}
+>>>>>>> origin/master
