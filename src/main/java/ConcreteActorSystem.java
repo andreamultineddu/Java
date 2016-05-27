@@ -2,7 +2,7 @@ public class ConcreteActroSystem extends AbsActorSystem
 {
     private ConcreteActroSystem instance = null;
 
-    private ConcreteActroSystem()
+    private ConcreteActorSystem()
     {
         actors = new Map();
     }
