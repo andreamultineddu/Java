@@ -19,7 +19,6 @@ public class ConcreteActorSystem extends AbsActorSystem
             instance = new ConcreteActorSystem()();
         return instance;
     }
-<<<<<<< HEAD
 
     public Actor RetrieveActor(ActorRef ar)
     {
@@ -39,7 +38,10 @@ public class ConcreteActorSystem extends AbsActorSystem
 
     protected ActorRef createActorReference(ActorMode mode)
     {
-        return new ActorRef();
+        if(mode==ActorMode.LOCAL)
+            return new LocalActorRef();
+        else
+            throw new IllegalArgumentException();
     }
 
     public void stop(ActorRef<?> actor)
@@ -52,6 +54,3 @@ public class ConcreteActorSystem extends AbsActorSystem
 
     }
 }
-=======
-}
->>>>>>> origin/master
